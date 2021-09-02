@@ -12,5 +12,5 @@ txtbox.onkeydown = function(e) {
         console.log(q);
         window.open('http://google.com/search?q='+q);
   }
-  e.preventDefault();
+  
 };
