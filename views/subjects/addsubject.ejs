@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Skydash Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+ <%-include('../partials/_navbar')%>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+      <%-include('../partials/_settings-panel')%>
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+     <%-include('../partials/_sidebar')%>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Add Subject</h4>
+                <p class="card-description">
+                  Subject Details Info
+                </p>
+                <form class="forms-sample " method="POST" action="/subjects">
+                  <div class="form-group ">
+                    <label class="col-sm-3 col-form-label">Department</label>
+                    <div class="col-sm-9 col-lg-12">
+                      <select name="dept" class="form-control" required>
+                        <option value="" disabled selected>Select Course</option>
+                     
+                        <%for (let x in sub[0]) {%>
+                          <option value="<%=sub[0][x].id%>"><%=sub[0][x].name%></option>
+                          <%}%> 
+                       
+                      
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3  col-form-label">Year</label>
+                        <div class="col-sm-9 col-lg-12">
+                          <select name="year" class="form-control" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            
+                          </select>
+                        </div>
+                  </div>
+
+                  <div class="form-group" method="post" action="subjects">
+                    <label for="Subject-Name">subject icon</label>
+                    <input type="text" class="form-control" name="iconlink" id="icon link" placeholder="Enter the icon link" required/>
+                  </div>
+                  <div class="form-group">
+                    <label for="Subject-Name">Subject Name</label>
+                    <input type="text" class="form-control" name="subname" id="subname" placeholder="Enter subject name" required/>
+                  </div>
+                  <div class="form-group">
+                    <label for="Subject-code">Subject Code</label>
+                    <input type="text" class="form-control" name="subcode" style="text-transform:uppercase" id="subcode" placeholder="Enter Subject code" required/>
+                  </div>
+                  
+                  <button type="submit"  class="btn btn-primary mr-2">Add</button>
+                  <button class="btn btn-light">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+          
+       
+        
+            <div class="card-body">
+              <h2 class="card-title">Subjects list <a href="/subjects" style="font-size:large; text-decoration: none;"><i class="ti-reload"></i></a></h2>
+              <div class="row" style="background-color: rgb(255, 255, 255);  border-radius: 17px; ">
+                <div class="col-12">
+    
+                  <div class="table-responsive">
+                    <div id="order-listing_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                     
+                      <div class="row" >
+                        <div class="col-sm-12">
+    
+                          <table id="order-listing" class="table dataTable no-footer" role="grid"
+                            aria-describedby="order-listing_info">
+                            <thead>
+                              <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="order-listing" rowspan="1"
+                                  colspan="1" aria-sort="ascending"
+                                  aria-label="Order #: activate to sort column descending"
+                                  style="width: 54.0312px;">S/No</th>
+                                <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1"
+                                  colspan="1" aria-label="Purchased On: activate to sort column ascending"
+                                  style="width: 96.3281px;">Subject Name</th>
+                                <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1"
+                                  colspan="1" aria-label="Customer: activate to sort column ascending"
+                                  style="width: 67.4219px;">Subject Code</th>
+                                  <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1"
+                                  colspan="1" aria-label="Customer: activate to sort column ascending"
+                                  style="width: 67.4219px;">Department</th>
+                                  <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1"
+                                  colspan="1" aria-label="Customer: activate to sort column ascending"
+                                  style="width: 67.4219px;">Year</th>
+                                  
+                                  <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1"
+                                  colspan="1" aria-label="Customer: activate to sort column ascending"
+                                  style="width: 67.4219px;">Edit</th>
+                                <th class="sorting" tabindex="0" aria-controls="order-listing" rowspan="1"
+                                  colspan="1" aria-label="Actions: activate to sort column ascending"
+                                  style="width: 62.7188px;">Delete</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+    
+    
+    
+                              <%count=1%>
+                   <% sub[2].forEach((e)=>{%>
+                          
+                         <% for(let x in e){%>
+                         
+                          <%for(let y in e[x]){%>
+                              
+                               
+                                <%e[x][y].forEach((d)=>{%>
+                                 
+                                  <tr>
+                                  <th><%=count++ %></th>
+                                  <td><%=d.Title%></td>
+                                  <td><%=d.id%></td>
+                                  <td><%=d.sub%></td>
+                                  <td><%=d.year%></td>
+                                  <td><a class="btn btn-primary"href="/subjects/edit?id=<%=d.id%>&sub=<%=d.sub%>&year=<%= d.year %> ">Edit</a></td>
+                                  <td><a class="btn btn-danger"href="/subjects/delete?id=<%=d.id%>&sub=<%=d.sub%>&year=<%= d.year %> ">Delete</a></td>
+                                </tr>
+                                <%})%>
+                         <%}%>
+                         
+                          <%}%>
+                   <%})%>
+
+    
+    
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+       <%-include('../partials/_footer')%>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="js/dataTables.select.min.js"></script>
+  <script src="js/data-table.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+   <!--Error response-->
+   <script src="js/errorresponse.js"></script>
+   <script src="js/searchgoogle.js"></script>
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+

@@ -1,0 +1,195 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>SNS-Repo Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="images/favicon.png" />
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+ <%-include('../partials/_navbar')%>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+      <%-include('../partials/_settings-panel')%>
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+     <%-include('../partials/_sidebar')%>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="col-12 grid-margin">
+            <div class="card">
+            
+              
+              <div class="card-body">
+                <h4 class="card-title">Add Student Details</h4>
+                <form action="edit" method="post"   class="form-sample">
+                  <p class="card-description">
+                    Student Info
+                  </p>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="name" id="name" style="text-transform:uppercase" value="<%=data.name%>" class="form-control" required/>
+                        </div>
+                      </div>
+                    </div>
+                    <% console.log("Iam in main page"); %> 
+                    <% console.log(data); %> 
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Year</label>
+                        <div class="col-sm-9">
+                          <select name="year" class="form-control" required>
+                            <option value="<%= data.department.year %>"><%= data.department.year %> </option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            
+                          </select>
+                        </div>
+                      </div>
+                   </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Reg.No</label>
+                        <div class="col-sm-9">
+                          <input type="text" name ="reg" id="reg" value="<%=data.reg%>" style="text-transform:uppercase" class="form-control" required/>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      
+                          <input type="hidden" name ="uid" id="uid" value="<%=data.email%>"  class="form-control" required/>
+                        
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Sec</label>
+                        <div class="col-sm-9">
+                          <select name="sec" class="form-control" required>
+                            <option value="<%=data.department.sec%>" selected><%=data.department.sec%> </option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Gender</label>
+                        <div class="col-sm-9">
+                          <select  class="form-control" name="gender" required>
+                            <option value="<%= data.gender %>" selected><%= data.gender %></option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Date of Birth</label>
+                        <div class="col-sm-9">
+                          <input type="text" name ="dob" id="dob" class="form-control" value="<%=data.dob%>" required/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Department</label>
+                        <div class="col-sm-9">
+                          <select name="dept" class="form-control" required>
+                            <option value="<%=data.department.id%>"  selected><%=data.department.name%></option>
+                            <%for (let x in course) {%>
+                              <option  value="<%=course[x].id%>"><%=course[x].name%></option>
+                              <%}%> 
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="email" id="email" value="<%=data.email%>" class="form-control" required/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <button type="submit" id="button" class="btn btn-primary mr-2">Save Changes</button>
+                  <button class="btn btn-light">Cancel</button>
+                </form>
+              </div>
+            </div>
+              
+              </div>
+            
+            </div>
+          </div>
+         
+
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+       <%-include('../partials/_footer')%>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="js/dataTables.select.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+  <script src="js/searchgoogle.js"></script>
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
