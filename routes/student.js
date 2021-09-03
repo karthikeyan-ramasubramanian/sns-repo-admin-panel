@@ -87,7 +87,8 @@ students.post('/',async(req,res)=>{
     console.log("Iam data of student");
     console.log(req.body);
     const name= req.body.name.toLocaleUpperCase();
-    const reg=req.body.reg.toLocaleUpperCase();
+    var reg=req.body.reg.toLocaleUpperCase();
+    reg = reg.trim();
     const dept =req.body.dept;
     const sec = req.body.sec;
     const year =req.body.year;
